@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 1rem;
+      }
+
+      button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      a {
+        color: blue;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="login-form">
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+    </form>
+
+    <form id="signup-form" style="display: none">
+      <div>
+        <label for="new-username">New Username</label>
+        <input type="text" id="new-username" name="new-username" required />
+      </div>
+      <div>
+        <label for="new-password">New Password</label>
+        <input type="password" id="new-password" name="new-password" required />
+      </div>
+      <button type="submit">Sign up</button>
+      <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+    </form>
+
+    <script>
+      const loginForm = document.querySelector("#login-form");
+      const signupForm = document.querySelector("#signup-form");
+      const loginLink = document.querySelector("#login-link");
+      const signupLink = document.querySelector("#signup-link");
+
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const username = document.querySelector("#username").value;
+        const password = document.querySelector("#password").value;
+        // Here you can add your logic to check if the username and password are correct
+        console.log(`Username: ${username}\nPassword: ${password}`);
+      });
+
+      signupForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const newUsername = document.querySelector("#new-username").value;
+        const newPassword = document.querySelector("#new-password").value;
+        // Here you can add your logic to create a new account with the given username and password
+        console.log(
+          `New Username: ${newUsername}\nNew Password: ${newPassword}`
+        );
+      });
+
+      loginLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+      });
+
+      signupLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        signupForm.style.display = "block";
+        loginForm.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
